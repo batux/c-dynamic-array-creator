@@ -3,7 +3,7 @@
 #include <time.h>
 
 int *resize(int *array, int limit);
-void fillWithRandomNumbers(int *array, int startIndex, int limit, int stepCount);
+void fill_with_random_numbers(int *array, int startIndex, int limit, int stepCount);
 void print(int *array, int limit);
 
 int main()
@@ -11,12 +11,12 @@ int main()
     int *array;
     
     int choice = 1;
-    int stepCount = 1;
-    int startIndex = 0;
+    int step_count = 1;
+    int start_index = 0;
     int limit = 10;
 
     array = resize(NULL, limit);
-    fillWithRandomNumbers(array, startIndex, limit, stepCount);
+    fill_with_random_numbers(array, start_index, limit, step_count);
     print(array, limit);
 
     while(choice >= 1)
@@ -29,14 +29,15 @@ int main()
             break;
         }
 
-        startIndex = limit;
+        start_index = limit;
 
         printf("Enter new size of array? \n");
         scanf("%d", &limit);
         
         array = resize(array, limit);
-        stepCount++;
-        fillWithRandomNumbers(array, startIndex, limit, stepCount);
+        step_count++;
+
+        fill_with_random_numbers(array, start_index, limit, step_count);
         print(array, limit);
     }
 
@@ -62,12 +63,12 @@ int *resize(int *array, int limit)
     return array;
 }
 
-void fillWithRandomNumbers(int *array, int startIndex, int limit, int stepCount)
+void fill_with_random_numbers(int *array, int start_index, int limit, int step_count)
 {
     srand(time(0));
 
-    printf("------- STEP-%d ------- \n", stepCount);
-    for(int i = startIndex; i < limit; i++)
+    printf("------- STEP-%d ------- \n", step_count);
+    for(int i = start_index; i < limit; i++)
     {
         array[i] = rand() / 10000;
     }
